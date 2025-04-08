@@ -1,7 +1,10 @@
+const apiUrl = import.meta.env.VITE_API_URL;
+
+console.log(apiUrl)
 
 async function searchDocuments(query, page = 1, limit = 10, filters = {}) {
   try {
-    const response = await fetch('http://localhost:5000/api/documents/search', {
+    const response = await fetch(`${apiUrl}/documents/search`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +28,7 @@ async function searchDocuments(query, page = 1, limit = 10, filters = {}) {
 
 async function addDocument(title, content) {
   try {
-    const response = await fetch('http://localhost:5000/api/documents', { // Updated base URL
+    const response = await fetch(`${apiUrl}/documents`, { // Updated base URL
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +49,7 @@ async function addDocument(title, content) {
 
 async function loginUser(email, password) {
   try {
-    const response = await fetch('http://localhost:5000/api/auth/login', {
+    const response = await fetch(`${apiUrl}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +68,7 @@ async function loginUser(email, password) {
 
 async function registerUser(userData) {
   try {
-    const response = await fetch('http://localhost:5000/api/auth/register', {
+    const response = await fetch(`${apiUrl}/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
